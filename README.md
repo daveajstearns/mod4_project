@@ -4,6 +4,7 @@
 
 ### Introduction
 According to the US Bureau of Labor Statistics:  
+  
           "*Employment of computer and information technology occupations is projected to grow 12 percent from 2018 to 2028, much faster than the average for all occupations. These occupations are projected to add about 546,200 new jobs. Demand for these workers will stem from greater emphasis on cloud computing, the collection and storage of big data, and information security.  
           The median annual wage for computer and information technology occupations was $88,240 in May 2019, which was higher than the median annual wage for all occupations of $39,810.*"
   
