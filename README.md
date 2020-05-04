@@ -1,6 +1,6 @@
 # Module 4 Project
 
-## _Finding the Best Real Estate Investments for Tech Professionals_
+## _Finding the Best Real Estate Cities for Tech Professionals_
 
 ### Introduction
 According to the US Bureau of Labor Statistics:  
