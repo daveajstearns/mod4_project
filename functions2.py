@@ -40,14 +40,35 @@ def dummy_up(data, column, prefix):
 
 def factorize(data, column):
     """Factorizes categorical columns to prepare for RandomForestClassifier.  
+
     Must apply to each column individually."""
     new = pd.factorize(data[column])[0] + 1
     return new
 
-def class_model(data, target, num_iter=5, models=['rfc', 'knn'], complexity='simple',
-                degree=2, graph=[''], fix_cb=[False], cv=3):
-    """This function will receive different user-defined commands (unless left blank, where there
-    some default settings), and generate models from the data.
-        * This will perform a cross validation on the data. The cv is customizable with a 
-        default of 3.
-        * 
+def makeMarker(coordinates, mapp):
+    for i in coordinates:
+        mark = folium.Marker(i)
+        mark.add_to(mapp)
+
+def dftest(data):
+    test = adfuller(data['value'])
+    test_output = pd.Series(test[0:4], index=['Test Stat', 'P-Value', '# Lags', '# Observations'])
+    for key, value in test[4].items():
+        test_output['Critical Value (%s)' %key]=value
+    return(test_output)
+
+def auto_corrs(data, metro):
+    fig, ax = plt.subplots(figsize=(16,3))
+    acf = plot_acf(data, ax=ax, lags=48, title=metro+' ACF')
+    fig, ax = plt.subplots(figsize=(16,3))
+    pacf = plot_pacf(data, ax=ax, lags=48, title=metro+' PACF')
+    return acf, pacf
+
+def alima(data, order, metro):
+    model = ARIMA(data, order)
+    fit = model.fit(disp=0)
+    print(fit.summary())
+    residuals = pd.DataFrame(fit.resid)
+    residuals.plot(kind='kde', title=metro)
+    pyplot.show()
+    
