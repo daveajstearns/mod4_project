@@ -64,11 +64,51 @@ def auto_corrs(data, metro):
     pacf = plot_pacf(data, ax=ax, lags=48, title=metro+' PACF')
     return acf, pacf
 
-def alima(data, order, metro):
-    model = ARIMA(data, order)
+def arima_search(data, ps, ds, qs):
+    aic_scores = {}
+    rmse_scores ={}
+    for p in ps:
+        for d in ds:
+            for q in qs:
+                model = ARIMA(data['1997':'2013'], order=(p,d,q))
+                fit = model.fit(disp=0)
+                aic_scores[p,d,q] = fit.aic
+                avg_vals = []
+                for line in list(fit.forecast(52)[2]):
+                    avg_vals.append((line[1]+line[0])/2)
+                mse = mean_squared_error(data['2014':'2018-04-01'], avg_vals)
+                rmse_scores[p,d,q] = math.sqrt(mse)
+    return ('Best ARIMA Parameters for AIC: ', min(aic_scores, key=aic_scores.get)), ('Best ARIMA Parameters for RMSE: ', min(rmse_scores, key=rmse_scores.get))
+
+def arima(data, order, metro):
+    model = ARIMA(data['1997':'2013'], order)
     fit = model.fit(disp=0)
+    print('ARIMA for',metro)
     print(fit.summary())
     residuals = pd.DataFrame(fit.resid)
     residuals.plot(kind='kde', title=metro)
-    pyplot.show()
-    
+    fit.plot_predict(end='2018-04-01')
+    avg_vals = []
+    for line in list(fit.forecast(52)[2]):
+        avg_vals.append((line[1]+line[0])/2)
+    mse = mean_squared_error(data['2014':'2018-04-01'], avg_vals)
+    rmse = math.sqrt(mse)
+    print('This model can predict the remaining 52 data points with an RMSE of ',rmse)
+    print('The following results are predicting values post-data set')
+    print('These predictions can only be confirmed with new data')
+    avg_2019 = ((fit.forecast(64)[2][-1][1]+fit.forecast(64)[2][-1][0])/2)
+    one_year = ((avg_2019-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
+    print('Percent change from 2010-04-1 to 2019-04-01: ',one_year)
+    fit.plot_predict(end='2019-04-01')
+    avg_2020 = ((fit.forecast(76)[2][-1][1]+fit.forecast(76)[2][-1][0])/2)
+    two_year = ((avg_2020-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
+    print('Percent change from 2010-04-1 to 2020-04-01: ',two_year)
+    fit.plot_predict(end='2020-04-01')
+    avg_2021 = ((fit.forecast(88)[2][-1][1]+fit.forecast(88)[2][-1][0])/2)
+    three_year = ((avg_2021-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
+    print('Percent change from 2010-04-1 to 2021-04-01: ',three_year)
+    fit.plot_predict(end='2021-04-01')
+    avg_2022 = ((fit.forecast(100)[2][-1][1]+fit.forecast(100)[2][-1][0])/2)
+    four_year = ((avg_2022-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
+    print('Percent change from 2010-04-1 to 2022-04-01: ',four_year)
+    fit.plot_predict(end='2022-04-01')
