@@ -24,4 +24,7 @@ We chose the top eight emerging tech hubs (metro areas):
 7. Philadelphia, PA
 8. Baltimore, MD
 
-These cities were chosen based on the aforementioned article's rating them as emerging tech hubs. We believe that tech talent is necessary throughout the country, and we also believe America is a beautiful country; any place in America can be home if you make it. 
+These cities were chosen based on the aforementioned article's rating them as emerging tech hubs. We believe that tech talent is necessary throughout the country, and we also believe America is a beautiful country; any place in America can be home if you make it. Tech companies have the immense power to literally change landscapes, build skyscrapers, and form communities. It goes without saying, the metro areas we chose have some considerable growth happening. In addition, property values are low but increasing, making it an excellent and reachable goal for any tech professional to purchase real estate within these metro areas.
+
+### Procedure
+First, we analyzed the Zillow data set. It came stock in what is called *Pandas Wide Format*. This format is not friendly to time series modeling and would warrant the use of `pd.melt()` to aid in transforming it to *Pandas Long Format*. 
