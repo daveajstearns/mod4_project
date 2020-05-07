@@ -87,7 +87,11 @@ def arima(data, order, metro):
     print(fit.summary())
     residuals = pd.DataFrame(fit.resid)
     residuals.plot(kind='kde', title=metro)
-    fit.plot_predict(end='2018-04-01')
+    fig,ax=plt.subplots(figsize=(8,6))
+    fit.plot_predict(end='2018-04-01', ax=ax)
+    ax = plt.xlabel('TIME')
+    ax = plt.ylabel('HOME VALUE')
+    plt.title('In Sample Predictions for %s' % (metro))
     avg_vals = []
     for line in list(fit.forecast(52)[2]):
         avg_vals.append((line[1]+line[0])/2)
@@ -99,19 +103,39 @@ def arima(data, order, metro):
     avg_2019 = ((fit.forecast(64)[2][-1][1]+fit.forecast(64)[2][-1][0])/2)
     one_year = ((avg_2019-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
     print('Percent change from 2010-04-1 to 2019-04-01: ',one_year)
-    fit.plot_predict(end='2019-04-01')
+    fig2,ax2 = plt.subplots(figsize=(8,6))
+    fit.plot_predict(end='2019-04-01', ax=ax2)
+    ax2 = plt.xlabel('TIME')
+    ax2 = plt.ylabel('HOME VALUE')
+    mons = (np.datetime64('2019-04-01','M') - np.datetime64('2018-04-01','M')).tolist()
+    plt.title('%s Months Out of Sample Forecast for %s'% (mons,metro))
     avg_2020 = ((fit.forecast(76)[2][-1][1]+fit.forecast(76)[2][-1][0])/2)
     two_year = ((avg_2020-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
     print('Percent change from 2010-04-1 to 2020-04-01: ',two_year)
-    fit.plot_predict(end='2020-04-01')
+    fig3,ax3 = plt.subplots(figsize=(8,6))
+    fit.plot_predict(end='2020-04-01', ax=ax3)
+    ax3 = plt.xlabel('TIME')
+    ax3 = plt.ylabel('HOME VALUE')
+    mons2 = (np.datetime64('2020-04-01','M') - np.datetime64('2018-04-01','M')).tolist()
+    plt.title('%s Months Out of Sample Forecast for %s'%(mons2,metro))
     avg_2021 = ((fit.forecast(88)[2][-1][1]+fit.forecast(88)[2][-1][0])/2)
     three_year = ((avg_2021-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
     print('Percent change from 2010-04-1 to 2021-04-01: ',three_year)
-    fit.plot_predict(end='2021-04-01')
+    fig4, ax4 = plt.subplots(figsize=(8,6))
+    fit.plot_predict(end='2021-04-01', ax=ax4)
+    ax4 = plt.xlabel('TIME')
+    ax4 = plt.ylabel('HOME VALUE')
+    mons3 = (np.datetime64('2021-04-01','M') - np.datetime64('2018-04-01','M')).tolist()
+    plt.title('%s Months Out of Sample Forecast for %s'%(mons3,metro))
     avg_2022 = ((fit.forecast(100)[2][-1][1]+fit.forecast(100)[2][-1][0])/2)
     four_year = ((avg_2022-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
     print('Percent change from 2010-04-1 to 2022-04-01: ',four_year)
-    fit.plot_predict(end='2022-04-01')
+    fig5, ax5 = plt.subplots(figsize=(8,6))
+    fit.plot_predict(end='2022-04-01', ax=ax5)
+    ax5 = plt.xlabel('TIME')
+    ax5 = plt.ylabel('HOME VALUE')
+    mons4 = (np.datetime64('2022-04-01','M') - np.datetime64('2018-04-01','M')).tolist()
+    plt.title('%s Months Out of Sample Forecast for %s'%(mons4,metro))
 
 def rolling_stats(data, window, city):
     r_mean=data.rolling(window=window).mean()
@@ -121,17 +145,17 @@ def rolling_stats(data, window, city):
     sns.lineplot(x=data.index,y=r_mean.value)
     sns.lineplot(x=data.index,y=r_std.value)
     plt.legend([city, 'ROLLING MEAN', 'ROLLING STDEV'], loc='best')
-    plt.xlabel('TIME')
-    plt.ylabel('HOUSE PRICE USD')
-    plt.title(f'ROLLING STATS FOR %s'%city)
+    plt.xlabel('TIME',size=18)
+    plt.ylabel('HOUSE PRICE USD', size=18)
+    plt.title(f'ROLLING STATS FOR %s'%city, size=24)
 
 def plot_ts(data,cities):
     fig, ax = plt.subplots(figsize=(12,8))
     for city in cities:
         sns.lineplot(x=data.index, y=data[city], ax=ax)
     plt.legend(cities, loc='best')
-    plt.xlabel('TIME')
-    plt.ylabel('HOUSE PRICE USD')
-    plt.title('ALL SELECTED METROS')
+    plt.xlabel('TIME', size=18)
+    plt.ylabel('HOUSE PRICE USD',size=18)
+    plt.title('ALL SELECTED METROS',size=24)
 
 
