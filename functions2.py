@@ -112,3 +112,26 @@ def arima(data, order, metro):
     four_year = ((avg_2022-data['value']['2010-04-01'])/data['value']['2010-04-01'])*100
     print('Percent change from 2010-04-1 to 2022-04-01: ',four_year)
     fit.plot_predict(end='2022-04-01')
+
+def rolling_stats(data, window, city):
+    r_mean=data.rolling(window=window).mean()
+    r_std=data.rolling(window=window).std()
+    fig,ax = plt.subplots(figsize=(12,8))
+    sns.lineplot(x=data.index,y=data.value)
+    sns.lineplot(x=data.index,y=r_mean.value)
+    sns.lineplot(x=data.index,y=r_std.value)
+    plt.legend([city, 'ROLLING MEAN', 'ROLLING STDEV'], loc='best')
+    plt.xlabel('TIME')
+    plt.ylabel('HOUSE PRICE USD')
+    plt.title(f'ROLLING STATS FOR %s'%city)
+
+def plot_ts(data,cities):
+    fig, ax = plt.subplots(figsize=(12,8))
+    for city in cities:
+        sns.lineplot(x=data.index, y=data[city], ax=ax)
+    plt.legend(cities, loc='best')
+    plt.xlabel('TIME')
+    plt.ylabel('HOUSE PRICE USD')
+    plt.title('ALL SELECTED METROS')
+
+
