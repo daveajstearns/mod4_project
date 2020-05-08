@@ -21,8 +21,7 @@ We chose the top eight emerging tech hubs (metro areas):
 4. Huntsville, AL
 5. Miami, FL
 6. Austin, TX
-7. Philadelphia, PA
-8. Baltimore, MD
+7. Baltimore, MD
 
 These cities were chosen based on the aforementioned article's rating them as emerging tech hubs. We believe that tech talent is necessary throughout the country, and we also believe America is a beautiful country; any place in America can be home if you make it. Tech companies have the immense power to literally change landscapes, build skyscrapers, and form communities. It goes without saying, the metro areas we chose have some considerable growth happening. In addition, property values are low but increasing, making it an excellent and reachable goal for any tech professional to purchase real estate within these metro areas.
 
@@ -47,4 +46,11 @@ Visual representation of non-stationarity throughout the data:
 ![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_phoenix.png "PHOENIX")
 ![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_raleigh.png "RALEIGH")
 
-
+Forecasted home values for our metros of interest:
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/atlanta_forecast.png "ATLANTA")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/austin_forecast.png "AUSTIN")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/baltimore_forecast.png "BALTIMORE")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/huntsville_forecast.png "HUNTSVILLE")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/miami_forecast.png "MIAMI")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/phoenix_forecast.png "PHOENIX")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/raleigh_forecast.png "RALEIGH")
