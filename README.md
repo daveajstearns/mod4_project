@@ -31,4 +31,10 @@ First, we analyzed the Zillow data set. It came stock in what is called *Pandas 
   
 The way the data was melted was by separating the data into the separate metro areas and then using the function to transform the data. Just prior to this, the data was checked for null values. Any null values were filled in with the mean of that column. This worked because in each metro there were many zip codes associated with the metro area, meaning if one zip code didn't have a value there was enough information to infer some sort of price value. Once nulls were taken care of, the data was melted.  
   
-
+The data was visualized, and a clear trend was noticed. To validate this visual indication, the Dickey Fuller Test was employed on the data. A function was created to peform this test rapidly. Based on the results of the tests, none of the data were stationary. The plots of the rolling mean against each time series also indicated that there was no observable stationarity in any of our data. A clear indication of the need for some order of differencing during modeling. ACF and PACF graphs were made for each metro's data to get an idea of how to order the ARIMA model.  
+  
+Once the preprocessing and exploratory analysis was finished, a function was created to search for the best ARIMA parameters (p,d,q) with a priority on minimizing RMSE and coming in second, minimizing AIC. The function could be further improved, as it is only semi-autonomous at this point. Once the best parameters were found, a custom function was used to fit the ARIMA model. This function did many things, including printing out forecasted home values, percent increase over the decade, and multiple forecast plots.  
+  
+The forecasted home values for the presentation were determined by averaging the forecast's confidence interval upper and lower bounds. In most cases, this seemed to produce close to actual results, however, Raleigh's forecast was too conservative. This method produced conservative results in general, which we felt is better than an exaggeration of market growth.  
+  
+### Results
