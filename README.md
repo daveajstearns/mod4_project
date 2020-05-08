@@ -27,4 +27,8 @@ We chose the top eight emerging tech hubs (metro areas):
 These cities were chosen based on the aforementioned article's rating them as emerging tech hubs. We believe that tech talent is necessary throughout the country, and we also believe America is a beautiful country; any place in America can be home if you make it. Tech companies have the immense power to literally change landscapes, build skyscrapers, and form communities. It goes without saying, the metro areas we chose have some considerable growth happening. In addition, property values are low but increasing, making it an excellent and reachable goal for any tech professional to purchase real estate within these metro areas.
 
 ### Procedure
-First, we analyzed the Zillow data set. It came stock in what is called *Pandas Wide Format*. This format is not friendly to time series modeling and would warrant the use of `pd.melt()` to aid in transforming it to *Pandas Long Format*. 
+First, we analyzed the Zillow data set. It came stock in what is called *Pandas Wide Format*. This format is not friendly to time series modeling and would warrant the use of `pd.melt()` to aid in transforming it to *Pandas Long Format*. The columns of the data were the dates for the time series. This was melted, and then the dates were coerced into the index. The dates were also transformed into datetime objects. A function was created to do this all in one shot.  
+  
+The way the data was melted was by separating the data into the separate metro areas and then using the function to transform the data. Just prior to this, the data was checked for null values. Any null values were filled in with the mean of that column. This worked because in each metro there were many zip codes associated with the metro area, meaning if one zip code didn't have a value there was enough information to infer some sort of price value. Once nulls were taken care of, the data was melted.  
+  
+
