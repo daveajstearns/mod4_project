@@ -38,3 +38,13 @@ Once the preprocessing and exploratory analysis was finished, a function was cre
 The forecasted home values for the presentation were determined by averaging the forecast's confidence interval upper and lower bounds. In most cases, this seemed to produce close to actual results, however, Raleigh's forecast was too conservative. This method produced conservative results in general, which we felt is better than an exaggeration of market growth.  
   
 ### Results
+Visual representation of non-stationarity throughout the data:  
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_atlanta.png "ATLANTA")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_austin.png "AUSTIN")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_baltimore.png "BALTIMORE")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_huntsville.png "HUNTSVILLE")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_miami.png "MIAMI")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_phoenix.png "PHOENIX")
+![alt text](https://github.com/daveajstearns/mod4_project/blob/david-stearns/images/r_stats_raleigh.png "RALEIGH")
+
+
