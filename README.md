@@ -15,7 +15,7 @@ With this in mind we feel that it is important for those entering this lucrative
 
 To get a better understanding of what counts as a *tech city* we consulted with **CompTIA** and **Learn to Code With Me**. The *COMPTIA TECH TOWN INDEX 2019*(https://www.comptia.org/content/research/best-tech-cities-it-jobs) article was helpful in coordinating a balanced list of regions to research. In addition, *THE 12 BEST CITIES TO START YOUR TECH CAREER IN THE U.S.*(https://learntocodewith.me/posts/best-tech-cities/) article on Learn to Code With Me (will be abbreviated as **LTCWM**) was used in order to fill some informational gaps. The LTCWM article provided a list of six emerging tech cities, and so we felt that this information was useful for our business case. 
  
-We chose the top eight emerging tech hubs (metro areas):  
+We chose the top seven emerging tech hubs (metro areas):  
 1. Atlanta, GA
 2. Phoenix, AZ
 3. Raleigh, NC
